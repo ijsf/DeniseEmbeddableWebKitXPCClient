@@ -12,6 +12,8 @@
 		E3F49D9E20DF1387006AFACE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3F49D9D20DF1387006AFACE /* Assets.xcassets */; };
 		E3F49DA120DF1387006AFACE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3F49D9F20DF1387006AFACE /* Main.storyboard */; };
 		E3F49DAE20DF1E8D006AFACE /* Bridge.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3F49DAD20DF1E8D006AFACE /* Bridge.cpp */; };
+		E3F49DB420E034C1006AFACE /* interface in Resources */ = {isa = PBXBuildFile; fileRef = E3F49DB320E034C1006AFACE /* interface */; };
+		E3F49DB820E043C2006AFACE /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F49DB720E043C2006AFACE /* CustomView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +27,8 @@
 		E3F49DAA20DF1CD9006AFACE /* XPCClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPCClient.h; sourceTree = "<group>"; };
 		E3F49DAC20DF1E8D006AFACE /* DeniseApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DeniseApp-Bridging-Header.h"; sourceTree = "<group>"; };
 		E3F49DAD20DF1E8D006AFACE /* Bridge.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Bridge.cpp; sourceTree = "<group>"; };
+		E3F49DB320E034C1006AFACE /* interface */ = {isa = PBXFileReference; lastKnownFileType = folder; path = interface; sourceTree = "<group>"; };
+		E3F49DB720E043C2006AFACE /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,8 +62,9 @@
 			isa = PBXGroup;
 			children = (
 				E3F49DA920DF1C5A006AFACE /* xpc */,
-				E3F49D9920DF1385006AFACE /* AppDelegate.swift */,
 				E3F49D9B20DF1385006AFACE /* ViewController.swift */,
+				E3F49DB720E043C2006AFACE /* CustomView.swift */,
+				E3F49D9920DF1385006AFACE /* AppDelegate.swift */,
 				E3F49D9D20DF1387006AFACE /* Assets.xcassets */,
 				E3F49D9F20DF1387006AFACE /* Main.storyboard */,
 				E3F49DA220DF1387006AFACE /* Info.plist */,
@@ -71,6 +76,7 @@
 		E3F49DA920DF1C5A006AFACE /* xpc */ = {
 			isa = PBXGroup;
 			children = (
+				E3F49DB320E034C1006AFACE /* interface */,
 				E3F49DAA20DF1CD9006AFACE /* XPCClient.h */,
 				E3F49DAD20DF1E8D006AFACE /* Bridge.cpp */,
 				E3F49DAC20DF1E8D006AFACE /* DeniseApp-Bridging-Header.h */,
@@ -139,6 +145,7 @@
 			files = (
 				E3F49D9E20DF1387006AFACE /* Assets.xcassets in Resources */,
 				E3F49DA120DF1387006AFACE /* Main.storyboard in Resources */,
+				E3F49DB420E034C1006AFACE /* interface in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,6 +156,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E3F49DB820E043C2006AFACE /* CustomView.swift in Sources */,
 				E3F49D9C20DF1385006AFACE /* ViewController.swift in Sources */,
 				E3F49DAE20DF1E8D006AFACE /* Bridge.cpp in Sources */,
 				E3F49D9A20DF1385006AFACE /* AppDelegate.swift in Sources */,

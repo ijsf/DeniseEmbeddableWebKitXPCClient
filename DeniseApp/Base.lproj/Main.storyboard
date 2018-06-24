@@ -676,6 +676,7 @@
                 </application>
                 <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="DeniseApp" customModuleProvider="target">
                     <connections>
+                        <outlet property="adfasdf" destination="wuy-N6-xR2" id="F98-gS-8jZ"/>
                         <outlet property="quitClicked" destination="1US-Nu-RDr" id="emz-C9-bCc"/>
                         <outlet property="statusMenu" destination="wuy-N6-xR2" id="YJw-Vu-cVG"/>
                     </connections>
@@ -720,7 +721,7 @@
         <scene sceneID="hIz-AP-VOD">
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="DeniseApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
+                    <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl" customClass="CustomView" customModule="DeniseApp" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="376" height="567"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>

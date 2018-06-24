@@ -39,11 +39,11 @@ extern "C" {
     }
     
     void xpcclient_mouseUp(XPCClient* xpcclient, const unsigned int x, const unsigned int y, const unsigned int mods) {
-        xpcclient->mouseMove(x, y, mods);
+        xpcclient->mouseUp(x, y, mods);
     }
     
     void xpcclient_mouseDown(XPCClient* xpcclient, const unsigned int x, const unsigned int y, const unsigned int mods) {
-        xpcclient->mouseMove(x, y, mods);
+        xpcclient->mouseDown(x, y, mods);
     }
     
     void xpcclient_keyPress(XPCClient* xpcclient, const unsigned int keys, const unsigned int mods) {
