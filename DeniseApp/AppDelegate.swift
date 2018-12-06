@@ -12,31 +12,60 @@ import Cocoa
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
+    let popover = NSPopover()
+    var eventMonitor: EventMonitor?
 
-    @IBOutlet weak var statusMenu: NSMenu!
-    @IBAction func quitClicked(_ sender: NSMenuItem) {
-        NSApplication.shared.terminate(self)
-    }
-    
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        // Insert code here to initialize your application
-        
-        // Set the text that appears in the menu bar
+        // Set up status item icon
         let icon = NSImage(named: NSImage.Name("statusIcon"))
         icon?.isTemplate = true // dark mode
-        statusItem.image = icon
+
+        // Instantiate view controller
+        let mainViewController = NSStoryboard(name: NSStoryboard.Name(rawValue: "Main"), bundle: nil).instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "ViewControllerId")) as! ViewController
         
-        // Set the menu that should appear when the item is clicked
-        statusItem.menu = statusMenu
+        // Set popover's view controller
+        popover.contentViewController = mainViewController
         
-        // Set if the item should change color when clicked
-        statusItem.highlightMode = true
+        // Set up status item button
+        if let button = statusItem.button {
+            button.image = icon;
+            button.action = #selector(AppDelegate.togglePopover(_:))
+            //popover.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.minY)
+        }
+
+        // Set up event monitor
+        eventMonitor = EventMonitor(mask: [NSEvent.EventTypeMask.leftMouseDown, NSEvent.EventTypeMask.rightMouseDown]) { [weak self] event in
+            if let popover = self?.popover {
+                if popover.isShown {
+                    self?.closePopover(event)
+                }
+            }
+        }
+        eventMonitor?.start()
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
     }
 
-
+    @objc func togglePopover(_ sender: AnyObject?) {
+        if popover.isShown {
+            closePopover(sender)
+        } else {
+            showPopover(sender)
+        }
+    }
+    
+    func showPopover(_ sender: AnyObject?) {
+        if let button = statusItem.button {
+            popover.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.minY)
+            eventMonitor?.start()
+        }
+    }
+    
+    func closePopover(_ sender: AnyObject?) {
+        popover.performClose(sender)
+        eventMonitor?.stop()
+    }
 }
 
