@@ -1,0 +1,20 @@
+<html>
+<head>
+</head>
+<body>
+Testing DeniseApp.notificationSet.
+<script>
+var show = false;
+setInterval(function() {
+  if (show) {
+    DeniseApp.notificationSet();
+  }
+  else {
+    DeniseApp.notificationReset();
+  }
+  show = !show;
+}, 2000);
+</script>
+</body>
+</html>
+
