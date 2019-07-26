@@ -8,6 +8,12 @@
 
 #include "XPCClient.h"
 
+// C -> Swift
+extern "C" {
+    void CB_notificationSet();
+    void CB_notificationReset();
+}
+
 extern "C" {
 
     XPCClient* xpcclient_create() {
