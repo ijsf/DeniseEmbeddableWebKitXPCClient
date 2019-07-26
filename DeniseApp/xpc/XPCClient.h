@@ -22,6 +22,8 @@ public:
     typedef std::function<void(const Denise::Wrapper::ProductType, const std::string, const std::string)> CallbackDeniseLoadProduct;
     typedef std::function<void(const bool)> CallbackDeniseSetOverlay;
     typedef std::function<void(const bool)> CallbackDeniseSetHeader;
+    typedef std::function<void(void)> CallbackDeniseAppNotificationSet;
+    typedef std::function<void(void)> CallbackDeniseAppNotificationReset;
 
     XPCClient() : m_frameData(nullptr), m_frameSize(0) {
     }
@@ -51,6 +53,12 @@ public:
     }
     void setCallbackDeniseSetHeader(CallbackDeniseSetHeader cb) {
         m_callbackDeniseSetHeader = cb;
+    }
+    void setCallbackDeniseAppNotificationSet(CallbackDeniseAppNotificationSet cb) {
+        m_callbackDeniseAppNotificationSet = cb;
+    }
+    void setCallbackDeniseAppNotificationReset(CallbackDeniseAppNotificationReset cb) {
+        m_callbackDeniseAppNotificationReset = cb;
     }
 
     bool connect() {
@@ -108,6 +116,18 @@ public:
                     if (xpc_dictionary_get_value(event, "deniseSetHeader")) {
                         if (m_callbackDeniseSetHeader) {
                             m_callbackDeniseSetHeader(xpc_dictionary_get_bool(event, "deniseSetHeader"));
+                        }
+                    }
+                    // deniseAppNotificationSet
+                    if (xpc_dictionary_get_value(event, "deniseAppNotificationSet")) {
+                        if (m_callbackDeniseAppNotificationSet) {
+                            m_callbackDeniseAppNotificationSet();
+                        }
+                    }
+                    // deniseAppNotificationReset
+                    if (xpc_dictionary_get_value(event, "deniseAppNotificationReset")) {
+                        if (m_callbackDeniseAppNotificationReset) {
+                            m_callbackDeniseAppNotificationReset();
                         }
                     }
                 }
@@ -285,6 +305,8 @@ private:
     CallbackDeniseLoadProduct m_callbackDeniseLoadProduct;
     CallbackDeniseSetOverlay m_callbackDeniseSetOverlay;
     CallbackDeniseSetHeader m_callbackDeniseSetHeader;
+    CallbackDeniseAppNotificationSet m_callbackDeniseAppNotificationSet;
+    CallbackDeniseAppNotificationReset m_callbackDeniseAppNotificationReset;
 };
 
 #endif /* XPCClient_hpp */

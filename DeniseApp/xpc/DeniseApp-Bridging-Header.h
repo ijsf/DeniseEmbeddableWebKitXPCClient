@@ -19,3 +19,7 @@ void xpcclient_keyPress(XPCClient* xpcclient, const unsigned int keys, const uns
 
 typedef void(*CallbackFrame)(const void*, const unsigned long);
 void xpcclient_set_callback_frame(XPCClient*, CallbackFrame cb);
+
+void xpcclient_set_callback_DeniseAppNotificationSet(XPCClient*, void(*fn)(void));
+void xpcclient_set_callback_DeniseAppNotificationReset(XPCClient*, void(*fn)(void));
+

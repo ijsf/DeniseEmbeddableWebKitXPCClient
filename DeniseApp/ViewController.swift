@@ -297,7 +297,25 @@ class ViewController: NSViewController {
                 )
             }
         })
-        xpcclient_loadURL(xpcClient, "https://denise:neu2018@daw.denise.io/")
+        //xpcclient_loadURL(xpcClient, "https://denise:neu2018@daw.denise.io/")
+        xpcclient_loadURL(xpcClient, "file:///Users/ijsf/work/denise/DeniseOSX/deniseapp-js-test.html")
+
+        // DeniseApp callbacks
+        xpcclient_set_callback_DeniseAppNotificationSet(xpcClient, {
+            () in DispatchQueue.main.async {
+                // Notification set
+                let appDelegate = NSApplication.shared.delegate as! AppDelegate
+                appDelegate.setIcon(iconName: "statusActiveIcon");
+            }
+        })
+        xpcclient_set_callback_DeniseAppNotificationReset(xpcClient, {
+            () in DispatchQueue.main.async {
+                // Notification reset
+                let appDelegate = NSApplication.shared.delegate as! AppDelegate
+                appDelegate.setIcon(iconName: "statusIcon");
+            }
+        })
+
         isInitialized = true
     }
 

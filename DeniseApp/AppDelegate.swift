@@ -8,18 +8,6 @@
 
 import Cocoa
 
-// C/C++ callbacks
-@_cdecl("CB_notificationSet")
-func CB_notificationSet() {
-    let appDelegate = NSApplication.shared.delegate as! AppDelegate
-    appDelegate.setIcon(iconName: "statusActiveIcon");
-}
-@_cdecl("CB_notificationReset")
-func CB_notificationReset() {
-    let appDelegate = NSApplication.shared.delegate as! AppDelegate
-    appDelegate.setIcon(iconName: "statusIcon");
-}
-
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
@@ -41,7 +29,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        // Set up status item icon
+        // Set up default status item icon
         setIcon(iconName: "statusIcon");
 
         // Instantiate view controller

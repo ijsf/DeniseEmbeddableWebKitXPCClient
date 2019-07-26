@@ -60,5 +60,13 @@ extern "C" {
     void xpcclient_set_callback_frame(XPCClient* xpcclient, CallbackFrame cb) {
         xpcclient->setCallbackFrame(cb);
     }
+    
+    void xpcclient_set_callback_DeniseAppNotificationSet(XPCClient* xpcclient, void(*fn)(void)) {
+        xpcclient->setCallbackDeniseAppNotificationSet(fn);
+    }
+    
+    void xpcclient_set_callback_DeniseAppNotificationReset(XPCClient* xpcclient, void(*fn)(void)) {
+        xpcclient->setCallbackDeniseAppNotificationReset(fn);
+    }
 }
 
